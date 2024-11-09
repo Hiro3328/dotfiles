@@ -38,7 +38,15 @@ alias grep='grep --color=auto'
 alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
 alias icat='kitten icat'
 
-
+# Functions
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # PIPX - Python Package Manager
 eval "$(register-python-argcomplete pipx)"
@@ -50,3 +58,10 @@ export PATH="$PATH:$HOME/.local/bin"
 eval "$(atuin init zsh)"
 
 zstyle ':completion:*' menu select
+
+# bun completions
+[ -s "/home/hiro/.bun/_bun" ] && source "/home/hiro/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
