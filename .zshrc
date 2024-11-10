@@ -37,6 +37,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
 alias icat='kitten icat'
+alias sol='ddcutil --display 1 setvcp 10'
 
 # Functions
 function y() {
