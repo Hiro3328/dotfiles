@@ -2,7 +2,6 @@ fish_config theme choose "Rosé Pine"
 fish_add_path --path $HOME/.local/bin
 fish_add_path --path $HOME/bin
 starship init fish | source
-set -x BAT_THEME Catppuccin-mocha
 set -x EDITOR nvim
 set -x fish_greeting ""
 
