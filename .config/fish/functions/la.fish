@@ -1,3 +1,3 @@
-function la --wraps='exa -l -a --color=always --group-directories-first' --description 'alias la=exa -l -a --color=always --group-directories-first'
-  exa -l -a --color=always --group-directories-first $argv; 
+function la --wraps='eza -l -a --color=always --group-directories-first' --description 'alias la=eza -l -a --color=always --group-directories-first'
+  eza -l -a --color=always --group-directories-first $argv; 
 end

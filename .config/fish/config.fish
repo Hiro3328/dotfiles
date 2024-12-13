@@ -1,7 +1,7 @@
 fish_config theme choose "Rosé Pine"
 fish_add_path --path $HOME/.local/bin
 fish_add_path --path $HOME/bin
-starship init fish | source
+zoxide init fish --cmd cd | source
 set -x EDITOR nvim
 set -x fish_greeting ""
 
@@ -15,6 +15,9 @@ bind p fish_clipboard_paste
 if status is-interactive   
   atuin init fish | source
   fzf --fish | source
+
+  starship init fish | source
+  #oh-my-posh init fish  --config $HOME/.config/fish/oh-my-posh.omp.json | source
 end
 if status --is-login    
     
