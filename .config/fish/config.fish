@@ -1,7 +1,9 @@
 fish_config theme choose "Rosé Pine"
 fish_add_path --path $HOME/.local/bin
-fish_add_path --path $HOME/bin
+fish_add_path --path $HOME/.cargo/bin/
 zoxide init fish --cmd cd | source
+
+set -x XDG_RUNTIME_DIR /run/user/1000/
 set -x EDITOR nvim
 set -x fish_greeting ""
 
@@ -28,3 +30,5 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 fish_add_path /home/hiro/.spicetify
+fish_add_path --path $HOME/.local/bin
+fish_add_path --path $HOME/.cargo/bin/
