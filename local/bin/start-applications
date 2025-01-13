@@ -1,0 +1,14 @@
+#!/bin/fish
+function start-audio
+  /usr/bin/pipewire &
+  /usr/bin/pipewire-pulse &
+  /usr/bin/wireplumber &
+end
+
+killall pipewire pipewire-pulse wireplumber 
+start-audio
+sleep 0.5 
+pidof waybar || waybar & 
+sleep 0.5
+killall DiscordCanary & discord-canary &
+exit
