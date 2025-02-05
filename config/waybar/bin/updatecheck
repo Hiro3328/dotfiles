@@ -1,7 +1,12 @@
 #/bin/sh
 
 tooltip=$(paru -Qu)
-text=$(echo $tooltip | wc -l)
+
+if [ -z "$tooltip" ]; then
+  text=0
+else
+  text=$(echo $tooltip | wc -l)
+fi
 
 cat <<EOF
 { "text":"󰮯 $text", "tooltip":"$tooltip"}  
