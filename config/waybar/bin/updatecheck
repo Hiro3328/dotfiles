@@ -1,6 +1,14 @@
-#/bin/sh
+#/bin/sh 
 
-tooltip=$(paru -Qu)
+LOCAL_DB=$HOME/.cache/updatecheck/
+SYSTEM_DB=$(pacman-conf DBPath) 
+
+mkdir -p $LOCAL_DB
+ln -s "$SYSTEM_DB/local" $LOCAL_DB &> /dev/null
+
+fakeroot -- pacman -Sy --dbpath $LOCAL_DB --logfile /dev/null &> /dev/null 
+
+tooltip=$(paru -Qu --dbpath $LOCAL_DB)
 
 if [ -z "$tooltip" ]; then
   text=0
