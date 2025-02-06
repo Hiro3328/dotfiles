@@ -13,9 +13,9 @@ tooltip=$(paru -Qu --dbpath $LOCAL_DB)
 if [ -z "$tooltip" ]; then
   text=0
 else
-  text=$(echo $tooltip | wc -l)
+  text=$(wc -l <<< "$tooltip")
 fi
 
 cat <<EOF
-{ "text":"󰮯 $text", "tooltip":"$tooltip"}  
+{ "text":"󰮯 $text", "tooltip":"${tooltip//$'\n'/\\n}"}  
 EOF
