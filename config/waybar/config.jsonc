@@ -9,7 +9,6 @@
   "modules-left": [
     "hyprland/workspaces",
     "tray",
-    "network",
     "keyboard-state"
   ],
   "fixed-center": true,
@@ -19,10 +18,10 @@
     "custom/notifications",
   ],
   "modules-right": [
-    "custom/player",
     "pulseaudio",
     "pulseaudio#microphone",
     "memory",
+    "network",
     "disk",
   ],
   "hyprland/window": {
@@ -105,13 +104,14 @@
     "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
   },
   "network": {
+    "interface": "eth*",
     "format-disconnected": "Disconnected",
     "format-wifi": "  {essid}",
-    "format-ethernet": "󰖟 {ipaddr}",
+    "format-ethernet": "󰖟 {bandwidthDownOctets}",
     "tooltip-format": " {signalStrength}",
-    "tooltip-format-ethernet": " {ifname}",
-    
+    "tooltip-format-ethernet": " {ipaddr}",
     "on-click": "nm-connection-editor",
+    "interval": 2
   },
   "bluetooth": {
     "format": " {status}",
@@ -142,18 +142,23 @@
     "signal": 8
   },
   "custom/notifications": {
-    "format": "{}",
-    "exec": "$HOME/.config/waybar/bin/not-dnd -j",
-    "on-click": "$HOME/.config/waybar/bin/not-dnd",
+    "tooltip": false,
+    "format": "{} {icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
     "return-type": "json",
-    "interval": "once",
-    "signal": 2
-  },
-  "custom/player": {
-    "format": "󰎆 {}",
-    "interval": 5,
-    "exec": "$HOME/.config/waybar/bin/playerinfo",
-    "max-length": 40,
-    "tooltip": true,
-  },
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
 }

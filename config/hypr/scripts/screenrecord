@@ -1,0 +1,14 @@
+#!/bin/sh
+
+file="${HOME}/Videos/$(date +%Y-%m-%d-%H-%M-%S).mkv"
+
+# if wf-record is already running, exit
+if pgrep wf-recorder; then
+  notify-send "Recording saved at $file"
+  pkill wf-recorder
+  exit 0
+else
+  notify-send "Recording at $file"
+  wf-recorder -c h264_nvenc -f "$file"
+fi
+

@@ -23,12 +23,14 @@ return {
     end
   },
   {
-    'vyfor/cord.nvim',
-    event = 'VeryLazy',
-    build = './build || .\\build',
-    opts = require "configs.cord", -- calls require('cord').setup()
-  }
-  -- {
+  'vyfor/cord.nvim',
+  event = 'VeryLazy',
+  build = ':Cord update',
+  opts = function ()
+    return require "configs.cord"
+  end
+  },
+ -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
   -- 		ensure_installed = {

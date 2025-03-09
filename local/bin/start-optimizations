@@ -1,11 +1,25 @@
 #!/bin/fish
+function enable-zram
+  modprobe zram
+  zramctl /dev/zram0 --algorithm zstd --size "3096MiB"
+  mkswap -U clear /dev/zram0
+  swapon --discard --priority 100 /dev/zram0
+  echo "zram enabled"
+end
 
-modprobe zram
-zramctl /dev/zram0 --algorithm zstd --size "2040MiB"
-mkswap -U clear /dev/zram0
-swapon --discard --priority 100 /dev/zram0
-echo "zram enabled"
+function enable-cpu
+  cpupower -c all frequency-set -d 400MHz
+  cpupower -c all frequency-set -u 3.9GHz
 
-cpupower -c all frequency-set -d 400MHz -u 3.9GHz
+  echo 0 | tee /sys/devices/system/cpu/cpufreq/boost
+end 
 
-echo 0 | tee /sys/devices/system/cpu/cpufreq/boost
+switch $argv
+  case ram
+    enable-zram
+  case cpu
+    enable-cpu
+  case "*"
+    enable-zram
+    enable-cpu
+end
