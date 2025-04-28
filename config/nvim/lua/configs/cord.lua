@@ -7,7 +7,7 @@ return {
     icon = nil,
   },
   display = {
-    theme = 'material',
+    theme = 'atom',
     swap_fields = false,
     swap_icons = false,
   },

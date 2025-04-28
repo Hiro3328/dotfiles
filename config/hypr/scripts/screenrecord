@@ -1,11 +1,11 @@
 #!/bin/sh
 
-file="${HOME}/Videos/$(date +%Y-%m-%d-%H-%M-%S).mkv"
+file="${HOME}/Videos/$(date +%Y-%m-%d-%H-%M-%S).mp4"
 
 # if wf-record is already running, exit
 if pgrep wf-recorder; then
   notify-send "Recording saved at $file"
-  pkill wf-recorder
+  killall wf-recorder
   exit 0
 else
   notify-send "Recording at $file"

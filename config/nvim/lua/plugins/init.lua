@@ -12,8 +12,17 @@ return {
       require "configs.lspconfig"
     end,
   },
+  
   {
-    'Exafunction/codeium.vim',
+    "vyfor/cord.nvim",
+    event = "VeryLazy",
+    build = ":Cord update",
+    opts = require "configs.cord",
+  },
+
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
     config = function ()
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
@@ -22,15 +31,11 @@ return {
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
     end
   },
-  {
-  'vyfor/cord.nvim',
-  event = 'VeryLazy',
-  build = ':Cord update',
-  opts = function ()
-    return require "configs.cord"
-  end
-  },
- -- {
+
+  -- test new blink
+  -- { import = "nvchad.blink.lazyspec" },
+
+  -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
   -- 		ensure_installed = {

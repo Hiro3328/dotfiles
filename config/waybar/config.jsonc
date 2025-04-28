@@ -131,6 +131,7 @@
     "interval": 6000,
     "format": " {percentage_used}%",
     "tooltip-format": "{used} used out of {total} on {path} ",
+    "on-click": "baobab"
   },
   "custom/updates": {
     "format": "{}",
