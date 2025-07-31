@@ -15,10 +15,11 @@ function enable-cpu
 end 
 
 switch $argv
-  case ram
+  case start
     enable-zram
-  case cpu
     enable-cpu
+  case stop
+    swapoff /dev/zram0
   case "*"
     enable-zram
     enable-cpu

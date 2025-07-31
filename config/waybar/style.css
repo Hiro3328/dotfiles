@@ -37,8 +37,8 @@ tooltip {
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
+    background: #11111b;
+    color: #eba0ac;
     border-radius: 7px;
 }
 

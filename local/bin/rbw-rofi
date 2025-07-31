@@ -1,12 +1,10 @@
 #!/bin/fish
-function rofi-wrapper
-  rofi -dmenu -p "🔒" $argv
+function dmenu-wrapper
+  fuzzel -d -p "🔒" --placeholder=" Type to Filter" $argv
 end
 
-function io-manager
+function rbw-parser
   rbw ls --fields name,user | awk -F "\t" '{print $1 " <" $2 ">"}'  
 end
 
-io-manager | rofi-wrapper | sed 's/ <\(.*\)>/\n\1/' | xargs -d "\n" -r rbw get | wl-copy 
-#rbw ls --fields name,user  | awk -F "\t" '{print $1 "\t\t" $2}' |
-#rofi -dmenu | awk -F "\t" '{print $1}' | xargs -r rbw get | wl-copy
+rbw-parser | dmenu-wrapper | sed 's/ <\(.*\)>/\n\1/' | xargs -d "\n" -r rbw get | wl-copy 

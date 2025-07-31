@@ -1,0 +1,12 @@
+#/bin/bash 
+count=$(dunstctl count history)
+
+if [ $count -gt 0 ]; then
+  alt="notification"
+else
+  alt="none"
+fi
+
+cat <<EOF
+{"text":"$count", "alt":"$alt"}  
+EOF
