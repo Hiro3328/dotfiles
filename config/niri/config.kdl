@@ -10,14 +10,14 @@
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 spawn-at-startup "start-applications"
-spawn-at-startup "xwayland-satellite"
+// spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "swaync"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 environment {
-    DISPLAY ":0"
+    // DISPLAY ":0"
 
     MOZ_DISABLE_RDD_SANDBOX "1"
 }
@@ -27,9 +27,9 @@ cursor {
   xcursor-size 16
 } 
 
-debug {
-    wait-for-frame-completion-in-pipewire
-}
+// debug {
+//     wait-for-frame-completion-in-pipewire
+// }
 
 // INPUTS {{{
 // Input device configuration.
@@ -387,10 +387,10 @@ binds {
     Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+B hotkey-overlay-title="Open a Browser: zen-browser" { spawn "zen-browser"; }
-    Mod+D hotkey-overlay-title="Open Discord" { spawn "discord-canary"; }
+    Mod+D hotkey-overlay-title="Open Discord" { spawn "equibop"; }
     Mod+T hotkey-overlay-title="Open Heroic" { spawn "flatpak" "run"  "com.heroicgameslauncher.hgl" ; }
    
-    Mod+A hotkey-overlay-title="Open Notifications" { spawn "swaync-client" "-t"; }
+    Mod+A hotkey-overlay-title="Open Notifications" { spawn "drun-notifications"; }
     Mod+V hotkey-overlay-title="Open the Cipboard Manager" { spawn "clipboard"; } 
     Mod+Slash hotkey-overlay-title="Open the Password Manager" { spawn "rbw-rofi"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.

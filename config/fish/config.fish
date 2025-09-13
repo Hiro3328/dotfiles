@@ -6,8 +6,8 @@ zoxide init fish --cmd cd | source
 set -x XDG_RUNTIME_DIR /run/user/1000/
 set -x EDITOR nvim
 set -x fish_greeting ""
-
-set -x FZF_DEFAULT_OPTS " --walker-skip .git,drive_z,z:
+set -x OZONE_PLATFORM_HINT "auto"
+set -x FZF_DEFAULT_OPTS " --walker-skip .git,dosdevices
                           --preview 'tree -C {}'"
 source $HOME/.config/fish/aliases.fish
 fish_vi_key_bindings

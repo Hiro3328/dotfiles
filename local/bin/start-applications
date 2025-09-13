@@ -10,5 +10,5 @@ start-audio
 sleep 0.5 
 pidof waybar || waybar & 
 sleep 0.5
-killall DiscordCanary & discord-canary &
+pidof equibop || equibop &
 exit

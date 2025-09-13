@@ -15,14 +15,14 @@
   "modules-center": [
     "custom/updates",
     "clock",
-    "custom/notifications",
+    "custom/notifications"
   ],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
     "memory",
     "network",
-    "disk",
+    "disk"  
   ],
   "niri/workspaces": {
     "sort-by-name": true,
@@ -69,7 +69,7 @@
     }
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "tooltip": false,
     "format-muted": " Muted",
     "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
@@ -85,7 +85,7 @@
       "default": [
         "",
         "",
-        "",
+        ""
       ]
     }
   },
@@ -95,7 +95,7 @@
     "format-source-muted": " Muted",
     "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
     "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+ --limit 1.15",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-"
   },
   "network": {
     "interface": "eth*",
@@ -114,12 +114,12 @@
     "tooltip-format": "{device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     "tooltip-format-enumerate-connected": "{device_alias}",
-    "on-click": "btblock",
+    "on-click": "btblock"
   },
   "memory": {
     "interval": 2,
     "format": " {used}G",
-    "tooltip-format": "{used} / {total} G",
+    "tooltip-format": "{used} / {total} G"
   },
   "disk": {
     "interval": 6000,
@@ -143,16 +143,19 @@
     "exec": "$HOME/.config/waybar/bin/notifications",
     "return-type": "json",
     "signal": 8,
-
+    
     "format-icons": {
       "notification": "<span foreground='red'><sup></sup></span>",
       "none": "",
       "dnd-notification": "<span foreground='red'><sup></sup></span>",
       "dnd-none": ""
     },
-    
-    "on-click": "",
-    "on-click-right": "",
+
+    "on-scroll-down": "dunstctl history-pop",
+    "on-scroll-up": "dunstctl close",
+    "on-click": "drun-notifications",
+    "on-click-right": "dunstctl history-clear",
     "tooltip": false
+    
   }
 }

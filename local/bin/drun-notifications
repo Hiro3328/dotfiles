@@ -1,0 +1,20 @@
+#!/bin/env python
+import subprocess
+import json
+
+output = subprocess.run("dunstctl history | jq", capture_output=True, shell=True).stdout.decode('utf-8')
+
+output = json.loads(output)
+
+fuzzelCommand = 'fuzzel --x-margin=10 -l 20 -d' 
+
+text = "\n".join("{}: {}".format(i['id']['data'], i['message']['data'].replace('<b>', ' ').replace('</b>', ' ').replace("\n", " ")) for i in output['data'][0])
+
+output = subprocess.run('echo "' + text + '" | ' + fuzzelCommand, capture_output=True, shell=True).stdout.decode('utf-8').removesuffix("\n")
+
+id = output.split(":")[0]
+
+if id == "":
+    exit(0)
+
+subprocess.run("dunstctl history-pop " + id, shell=True)

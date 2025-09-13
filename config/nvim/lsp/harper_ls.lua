@@ -1,7 +1,35 @@
-require('lspconfig').harper_ls.setup {
-  settings = {
+return {
+  cmd = { 'harper-ls', '--stdio' },
+  filetypes = {
+    'c',
+    'cpp',
+    'cs',
+    'gitcommit',
+    'go',
+    'html',
+    'java',
+    'javascript',
+    'markdown',
+    'nix',
+    'python',
+    'ruby',
+    'rust',
+    'swift',
+    'toml',
+    'typescript',
+    'typescriptreact',
+    'haskell',
+    'cmake',
+    'typst',
+    'php',
+    'dart',
+    'clojure',
+  },
+  root_markers = { '.git' },
+	settings = {
     ["harper-ls"] = {
       userDictPath = "",
+      workspaceDictPath = "",
       fileDictPath = "",
       linters = {
         SpellCheck = true,
@@ -25,7 +53,10 @@ require('lspconfig').harper_ls.setup {
       diagnosticSeverity = "hint",
       isolateEnglish = false,
       dialect = "American",
-      maxFileLength = 120000
+      maxFileLength = 120000,
+      ignoredLintsPath = {}
     }
-  }
+  },
+	capabilities = require('blink.cmp').get_lsp_capabilities(),
+
 }

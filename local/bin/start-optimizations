@@ -7,6 +7,10 @@ function enable-zram
   echo "zram enabled"
 end
 
+function enable-ntsync
+  modprobe ntsync
+end
+
 function enable-cpu
   cpupower -c all frequency-set -d 400MHz
   cpupower -c all frequency-set -u 3.9GHz
