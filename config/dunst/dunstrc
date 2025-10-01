@@ -214,7 +214,7 @@
     hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = no
+    show_indicators = yes
 
     ### Icons ###
 
@@ -253,7 +253,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/fuzzel -p dunst:
+    dmenu = /usr/bin/fuzzel -p dunst: -d 
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -325,7 +325,7 @@
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
     mouse_left_click = do_action,close_current
-    mouse_middle_click = close_all
+    mouse_middle_click = context_all,close_all
     mouse_right_click = close_current
 
     

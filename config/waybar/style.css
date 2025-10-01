@@ -57,8 +57,8 @@ tooltip {
 #window,
 #clock,
 #battery,
-#pulseaudio,
-#pulseaudio.microphone,
+#wireplumber,
+#wireplumber.microphone,
 #network,
 #bluetooth,
 #custom-notifications,
@@ -166,13 +166,13 @@ tooltip {
   margin-right: 5px;
 } 
 
-#pulseaudio {
+#wireplumber {
   color: #89b4fa;
   border-radius: 7px 0px 0px 7px;
   margin-right: 0px;
 }
 
-#pulseaudio.microphone {
+#wireplumber.source {
     color: #cba6f7;
     border-radius: 0px 7px 7px 0px;
     margin-left: 0px;

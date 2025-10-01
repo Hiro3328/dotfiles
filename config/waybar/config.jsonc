@@ -18,8 +18,8 @@
     "custom/notifications"
   ],
   "modules-right": [
-    "pulseaudio",
-    "pulseaudio#microphone",
+    "wireplumber",
+    "wireplumber#source",
     "memory",
     "network",
     "disk"  
@@ -68,7 +68,7 @@
         "unlocked": ""
     }
   },
-  "pulseaudio": {
+  "wireplumber": {
     "format": "{icon} {volume}%",
     "tooltip": false,
     "format-muted": " Muted",
@@ -89,7 +89,7 @@
       ]
     }
   },
-  "pulseaudio#microphone": {
+  "wireplumber#source": {
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": " Muted",

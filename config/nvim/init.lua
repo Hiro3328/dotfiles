@@ -20,7 +20,7 @@ opts.ignorecase = true
 opts.shiftwidth = 2
 opts.smartindent = true
 opts.undofile = true
-opts.signcolumn = "yes"
+opts.signcolumn = "yes:1"
 
 -- Keymaps
 local map = vim.keymap.set
@@ -40,7 +40,7 @@ map('n', '<leader>fb', '<CMD>Telescope buffers<CR>')
 
 -- Git 
 map('n', '<leader>gf', '<CMD>Telescope git_files<CR>')
-
+map('n', '<leader>gs', '<CMD>Telescope git_status<CR>')
 
 
 	-- Moving Windows
@@ -57,6 +57,7 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/folke/which-key.nvim' },
+	{ src = 'https://github.com/refractalize/oil-git-status.nvim' },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	--	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
@@ -68,7 +69,12 @@ vim.cmd("colorscheme vague")
 
 -- Plugins
 require "mason".setup()
-require("oil").setup()
+require("oil").setup({
+  win_options = {
+    signcolumn = "yes:2",
+  },
+})
+require("oil-git-status").setup()
 
 require "blink.cmp".setup({
 	opts = {

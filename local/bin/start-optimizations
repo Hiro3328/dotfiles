@@ -11,6 +11,10 @@ function enable-ntsync
   modprobe ntsync
 end
 
+function enable-gpu 
+	coolerctl
+end 
+
 function enable-cpu
   cpupower -c all frequency-set -d 400MHz
   cpupower -c all frequency-set -u 3.9GHz
@@ -22,9 +26,12 @@ switch $argv
   case start
     enable-zram
     enable-cpu
+		enable-gpu
   case stop
     swapoff /dev/zram0
-  case "*"
+	case test
+  	enable-gpu
+	case "*"
     enable-zram
     enable-cpu
 end
