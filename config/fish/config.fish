@@ -24,7 +24,7 @@ if status is-interactive
 end
 
 if status --is-login    
-	pidof niri || exec dbus-run-session niri --session    
+
 end
 
 # bun

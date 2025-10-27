@@ -1,0 +1,18 @@
+#!/bin/bash
+
+init_updates() {
+	while true; do 
+		./updatecheck
+		sleep 1800
+	done
+}
+
+init_notifier() {
+	while true; do
+		./notifications
+		sleep 2
+	done
+}
+
+init_updates &
+init_notifier &

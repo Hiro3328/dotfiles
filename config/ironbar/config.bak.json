@@ -1,0 +1,97 @@
+{
+	"position": "top",
+	"layer": "bottom",
+	"height": 0,
+	"name": "ironbar",
+	
+	"start": [
+		{
+			"type": "workspaces"
+		},
+		{
+			"type": "tray",
+			"icon_size": 20
+		}
+	],
+
+
+	"center": [
+		{
+			"type": "custom",
+			"class": "updates",
+			"name": "updates",
+			"bar": [
+				{
+				"type": "button",
+				"label": "#packPending",
+				"on_click": "popup:toggle"
+				}
+				
+			],
+			"popup": [
+				{
+					"type": "box",
+					"orientation": "vertical",
+					"name": "packBox",
+					"widgets": [
+						{
+							"type": "label",
+							"name": "packLabel",
+							"label": "#packNames" 
+						}
+					]
+				}				
+			]
+    },
+		{
+      "type": "clock",
+    	"format": "󰸗 %a, %d %b %H:%M:%S"
+    },
+		{
+			"type": "custom",
+			"class": "notifications",
+			"bar": [
+				{
+				"type": "button",
+				"label": "#notifierNumber",
+				"on_click_left": "drun-notifications",
+				"on_scroll_down": "dunstctl history-pop",
+				"on_scroll_up": "dunstctl close",
+				"on_click_right": "dunstctl history-clear"
+				} 
+			]
+    }
+	],
+	
+
+	"end": [
+		{
+      "type": "script",
+      "cmd": "$HOME/.config/ironbar/bin/notifications",
+      "mode": "poll",
+      "interval": 1000,
+			"show-if": ""
+    },
+		{
+      "type": "script",
+      "cmd": "$HOME/.config/ironbar/bin/updatecheck",
+      "mode": "poll",
+      "interval": 18000000,
+			"show-if": ""
+    },
+		{
+      "format": [
+        "  {memory_used#Gi:1.2}G ",
+        " 󰖟 {net_down#M} mo/s ",
+        " 󰋊 {disk_percent@/}% "
+      ],
+      "interval": {
+        "disks": 300,
+        "memory": 2,
+        "networks": 3
+      },
+      "type": "sys_info"
+    }
+
+	]
+}

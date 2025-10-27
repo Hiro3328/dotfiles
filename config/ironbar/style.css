@@ -1,0 +1,112 @@
+:root {
+ --cyan:		#cdd6f4;
+ --orange:	#f5a97f;
+ --green:		#a6e3a1;
+ --blue:		#89b4fa;
+ --pink:		#cba6f7;
+ --yellow:	#f9e2af;
+ --black:		#000000;
+ --gray:		#313244;
+ --bg:			rgba(21, 18, 27, 0.5);
+}
+
+* {
+	all: unset;
+	padding: 0.2px 2px 0.2px 2px;
+	margin: 0px 1px 0px 1px;
+	font-size: 1.05rem;
+	font-family: "monospace";
+	font-weight: 500;
+	min-height: 0;
+}
+
+.workspaces,
+.tray,
+.updates,
+.notifications,
+.clock,
+.sysinfo .item {
+	background-color: var(--black);	
+	border-radius: 5px;
+}
+
+.workspaces button { color: var(--gray); }
+.workspaces .item.focused { color: var(--orange); }
+
+.workspaces .item.focused,
+.workspaces button:hover{
+	background: #11111b;
+	border-radius: 7px;
+}
+
+
+.popup {
+	color: aliceblue;
+	border: 2px solid var(--cyan);
+	padding: 0.5em;
+	border-radius: 3px;
+	background-color: var(--black);
+}
+
+
+.sysinfo :nth-child(1),
+.updates {
+ color: var(--blue);
+}
+
+.sysinfo :nth-child(2),
+.clock {
+	color: var(--green);
+}
+
+
+.popup-clock .calendar {
+	background-color: whitesmoke;
+	color: black;
+	border-radius: 10px;
+}
+
+.popup-clock .calendar-clock {
+	color: var(--pink);
+	font-weight: bold;
+}
+
+.popup-clock .calendar header { 
+	border-bottom: solid 1px gray;
+	border-radius: 10px;
+}
+
+.popup-clock .calendar header button,
+.popup-clock .calendar grid .day-name
+{	color: darkgray; }
+
+.popup-clock .calendar grid .other-month { color: lightgray; }
+
+
+
+.popup-clock .calendar .today {
+	background: var(--orange);
+	border-radius: 10px;
+	color: aliceblue;
+}
+
+.sysinfo :nth-child(3),
+.notifications button {
+	color: var(--yellow);
+}
+
+
+.sysinfo { 
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.sysinfo .item {
+	padding: 2px 2px 2px 2px;
+}
+
+
+#bar { padding: 0; background-color: var(--bg); }
+
+
+

@@ -1,0 +1,21 @@
+{
+  "plugins": {
+    "blink.cmp": [],
+    "corn.nvim": {
+      "rev": "5106eff",
+      "src": "https://github.com/RaafatTurki/corn.nvim"
+    },
+    "mason.nvim": [],
+    "nvim-colorizer.lua": [],
+    "nvim-lspconfig": [],
+    "nvim-treesitter": {
+      "version": "'main'"
+    },
+    "oil-git-status.nvim": [],
+    "oil.nvim": [],
+    "plenary.nvim": [],
+    "telescope.nvim": [],
+    "vague.nvim": [],
+    "which-key.nvim": []
+  }
+}

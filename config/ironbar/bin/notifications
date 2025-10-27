@@ -1,0 +1,11 @@
+#!/bin/lua
+
+sh = require("sh")
+sh.install()
+
+local count = dunstctl("count", "history")
+if tostring(count) ~= "0" then
+	ironbar("var", "set", "notifierNumber", tostring(count) .. " <span foreground='red'><sup></sup></span>")
+else
+	ironbar("var", "set", "notifierNumber", 0 .. " ")
+end

@@ -1,0 +1,5 @@
+type = process
+command = /home/Hiro/.local/bin/updatecheck
+logfile = $HOME/.local/state/volumeicon.log
+env-file = /home/Hiro/.config/dinit.d/enviroment
+

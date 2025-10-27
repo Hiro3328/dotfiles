@@ -13,6 +13,7 @@ end
 
 function enable-gpu 
 	coolerctl
+	echo "gpu enabled"
 end 
 
 function enable-cpu
@@ -29,9 +30,11 @@ switch $argv
 		enable-gpu
   case stop
     swapoff /dev/zram0
+		kill optimizer
 	case test
   	enable-gpu
 	case "*"
     enable-zram
     enable-cpu
+		enable-gpu
 end

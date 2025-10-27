@@ -1,0 +1,67 @@
+let {
+    $workspaces = { type = "workspaces" }
+    $tray = { type = "tray" }
+
+    $sys_info = {
+			type = "sys_info" 
+			format = ["  {memory_used#Gi:1.2}G " " 󰖟 {net_down#M} mo/s " " 󰋊 {disk_percent@/}% " ]
+			interval.disks = 300
+			interval.memory = 2
+			interval.networks = 3
+		}
+    
+		$clock = { type = "clock" format = "󰸗 %a, %d %b %H:%M:%S" }
+		
+		$updates = {
+			type = "custom"
+			class = "updates"
+			name = "updates" 
+			
+			bar = [ { type = "label" name = "packLabel" label = "#packPending" } ]
+			popup = [ { 
+				type = "box"
+				orientation = "vertical"
+				name = "packBox"
+				widgets = [ { type = "label" name = "packNames" label = "#packNames" } ]
+			} ]
+		}
+	
+		$notifications = {
+			type = "custom"
+			class = "notifications"
+
+			bar = [ {
+				type = "button" label = "#notifierNumber"
+				on_click_left = "drun-notifications"
+				on_click_right = "dunstctl history-clear"
+				on_scroll_down = "dunstctl history-pop"
+				on_scroll_up = "dunstctl close"
+			} ] 
+
+		}
+		
+		$scriptManager = {
+			type = "custom"
+			class = "hidden"
+
+			show-if = ""
+			
+			bar = [
+				{ type = "script" cmd = "~/.config/ironbar/bin/updatecheck" mode = "poll" interval = 18000000 }
+				{ type = "script" cmd = "~/.config/ironbar/bin/notifications" mode = "poll" interval = 18000000 }
+			]
+			
+		}
+		
+
+} in {
+    icon_theme = "Paper"
+		position = "top"
+		layer = "bottom"
+		height = 0
+		name = "testing"
+
+    start = [ $workspaces  ]
+    center = [ $updates $clock $notifications]
+    end = [ $scriptManager $sys_info ] 
+}

@@ -1,5 +1,6 @@
 local opts = vim.opt
 
+
 opts.number = true
 opts.relativenumber = true
 opts.wrap = false
@@ -20,7 +21,7 @@ opts.ignorecase = true
 opts.shiftwidth = 2
 opts.smartindent = true
 opts.undofile = true
-opts.signcolumn = "yes:1"
+opts.signcolumn = "no"
 
 -- Keymaps
 local map = vim.keymap.set
@@ -31,7 +32,7 @@ map('n', '<Esc>', '<cmd>nohlsearch<CR>') -- clear searches on pressing Esc
 map("n", "<leader>o", ':update<CR> :source<CR>', { desc = "Update Config" })
 
 map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-map('i', '<c-e>', function() vim.lsp.completion.get() end)
+map('i', '<C-e>', function() vim.lsp.completion.get() end)
 map('n', '<leader>lf', vim.lsp.buf.format)
 
 map('n', '-', "<CMD>:Oil<CR>", { desc = "Open Oil"})
@@ -58,6 +59,8 @@ vim.pack.add({
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/folke/which-key.nvim' },
 	{ src = 'https://github.com/refractalize/oil-git-status.nvim' },
+	{ src = 'https://github.com/norcalli/nvim-colorizer.lua.git' },
+	{ src = 'https://github.com/RaafatTurki/corn.nvim'},
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	--	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
@@ -68,35 +71,24 @@ vim.cmd("colorscheme vague")
 
 
 -- Plugins
+require 'plugins.corn'
+require 'plugins.colorizer'
+require 'plugins.blink'
 require "mason".setup()
 require("oil").setup({
   win_options = {
     signcolumn = "yes:2",
   },
 })
+
 require("oil-git-status").setup()
 
-require "blink.cmp".setup({
-	opts = {
-    keymap = { preset = 'default' },
 
-    appearance = {
-      nerd_font_variant = 'mono'
-    },
-
-    completion = { documentation = { auto_show = true } },
-
-    sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
-
-    fuzzy = { implementation = "prefer_rust_with_warning" }
-  },
-  opts_extend = { "sources.default" }
-})
 
 -- LSP
 vim.lsp.enable({
 	"lua_ls",
-	"harper_ls"
+	"vscode-css",
+	"jsonls",
+	"bashls",
 })

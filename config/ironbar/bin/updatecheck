@@ -1,0 +1,39 @@
+#!/bin/env lua
+
+local sh = require("sh")
+sh.install()
+sh.__raise_errors = false
+
+local function fileExists(filename)
+   local ok, err, code = os.rename(filename, filename)
+   if not ok then
+      if code == 13 then
+         -- Permission denied, but it exists
+         return true
+      end
+   end
+   return ok, err
+end
+
+local home = "/home/"..whoami()
+local scriptDB = home.."/.cache/updatecheck_lua"
+local systemDB = sh "pacman-conf" "DBPath"
+
+if not fileExists(scriptDB.."/local") then
+	mkdir("-p", scriptDB)
+	ln("-s", systemDB .. "local", scriptDB)
+end
+
+fakeroot("pacman", "-Sy", "--dbpath", scriptDB, "--logfile", "/dev/null")
+
+local packages = tostring(paru("-Qu", "--dbpath", scriptDB))
+
+if packages == "" then
+	pendingPackages = -1
+	packages = "No pending packages"
+else
+	_, pendingPackages = string.gsub(packages, "\n", "\n")
+end
+
+ironbar("var", "set", "packPending", "󰮯 "..pendingPackages+1)
+ironbar("var", "set", "packNames", packages)

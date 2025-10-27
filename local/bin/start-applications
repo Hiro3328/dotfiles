@@ -8,7 +8,7 @@ end
 killall pipewire pipewire-pulse wireplumber 
 start-audio
 sleep 0.5 
-pidof waybar || waybar & 
+pidof ironbar || ironbar & 
 sleep 0.5
 pidof equibop || equibop &
 exit
